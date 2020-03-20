@@ -1,0 +1,54 @@
+CORE:
+  config:
+
+    - name: R1
+      host: 192.168.28.15
+      username: ilham
+      password: cisco
+      device_type: cisco_ios
+      
+      config_interface:
+        - interface: g0/2
+          ip_address: 192.168.5.1
+          netmask: 255.255.255.0
+          no_shut : True
+        
+        - interface: g0/3
+          ip_address: 192.168.15.2
+          netmask: 255.255.255.0
+          no_shut : True
+
+      config_rip:
+        - version: 2
+          network: [ 192.168.5.0, 192.168.15.0 ]
+      
+      configuration:
+        - save: True
+        - backup: True
+
+    
+    - name: R2
+      host: 192.168.28.16
+      username: ilham
+      password: cisco
+      device_type: cisco_ios
+      
+      config_interface:
+        - interface: g0/2
+          ip_address: 192.168.6.1
+          netmask: 255.255.255.0
+          no_shut : True
+        
+        - interface: g0/3
+          ip_address: 192.168.15.3
+          netmask: 255.255.255.0
+          no_shut : True
+    
+      config_rip:
+        - version: 2
+          network: [ 192.168.6.0, 192.168.15.0 ]
+      
+      configuration:
+        - save: True
+        - backup: True
+    
